@@ -1,3 +1,4 @@
+import { isObject } from 'min-dash';
 import AddFormFieldHandler from './cmd/AddFormFieldHandler';
 import EditFormFieldHandler from './cmd/EditFormFieldHandler';
 import MoveFormFieldHandler from './cmd/MoveFormFieldHandler';
@@ -40,11 +41,16 @@ export default class Modeling {
     this._commandStack.execute('formField.add', context);
   }
 
-  editFormField(formField, key, value) {
+  editFormField(formField, properties, value) {
+    if (!isObject(properties)) {
+      properties = {
+        [ properties ]: value
+      };
+    }
+
     const context = {
       formField,
-      key,
-      value
+      properties
     };
 
     this._commandStack.execute('formField.edit', context);
