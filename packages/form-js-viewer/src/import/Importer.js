@@ -1,5 +1,7 @@
 import { generateIdForType } from '../util';
 
+import { isUndefined } from 'min-dash';
+
 export default class Importer {
 
   /**
@@ -42,6 +44,7 @@ export default class Importer {
   importFormField(formField, data = {}, parentId) {
     const {
       components,
+      id,
       key,
       type
     } = formField;
@@ -71,6 +74,10 @@ export default class Importer {
 
     // Set form field ID
     formField._id = _id;
+
+    if (isUndefined(id)) {
+      formField.id = _id;
+    }
 
     this._formFieldRegistry.set(_id, formField);
 
