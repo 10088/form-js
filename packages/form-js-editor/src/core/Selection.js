@@ -11,7 +11,9 @@ export default class Selection {
   set(selection) {
     this._selection = selection;
 
-    this._eventBus.fire('selection.changed', this._selection);
+    this._eventBus.fire('selection.changed', {
+      selection: this._selection
+    });
   }
 
   clear() {
