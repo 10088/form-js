@@ -49,6 +49,9 @@ describe('FormEditor', function() {
       container,
       schema,
       debounce: true,
+      renderer: {
+        compact: true
+      },
       keyboard: {
         bindTo: document
       }
@@ -60,6 +63,29 @@ describe('FormEditor', function() {
 
     // then
     expect(formEditor.get('formFieldRegistry').size).to.equal(11);
+  });
+
+
+  it('should render compact', async function() {
+
+    // when
+    await createFormEditor({
+      container,
+      schema,
+      debounce: true,
+      renderer: {
+        compact: true
+      },
+      keyboard: {
+        bindTo: document
+      }
+    });
+
+    // then
+    const editorContainer = container.querySelector('.fjs-editor-container');
+
+    expect(editorContainer).to.exist;
+    expect(editorContainer.matches('.fjs-editor-compact')).to.be.true;
   });
 
 
