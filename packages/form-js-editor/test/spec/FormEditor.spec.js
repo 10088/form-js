@@ -48,7 +48,6 @@ describe('FormEditor', function() {
     const formEditor = await createFormEditor({
       container,
       schema,
-      debounce: true,
       renderer: {
         compact: true
       },
@@ -72,7 +71,6 @@ describe('FormEditor', function() {
     await createFormEditor({
       container,
       schema,
-      debounce: true,
       renderer: {
         compact: true
       },
