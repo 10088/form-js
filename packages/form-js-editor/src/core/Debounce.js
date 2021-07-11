@@ -7,7 +7,7 @@ import { debounce } from 'min-dash';
  */
 export default function DebounceFactory(config) {
 
-  const timeout = typeof config === 'number' ? config : config ? 300 : 0;
+  const timeout = typeof config === 'number' ? config : !config ? 0 : 300;
 
   if (timeout) {
     return fn => debounce(fn, timeout);
